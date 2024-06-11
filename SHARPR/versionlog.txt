@@ -1,0 +1,9 @@
+Version 1.0.2 - 8/21/2016
+*Replaced a double tab with a single tab in the header of the AdjacentChanges table
+
+Version 1.0.1 - 7/3/2016
+*Removed debug output from the Infer command
+*Added some more informative error messages in places
+*Made some internal code changes
+
+Version 1.0.0 - 3/2/2016
