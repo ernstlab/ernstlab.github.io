@@ -1,1 +1,162 @@
+<html>
+<head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>ConsHMM Atlas: Conservation state annotations</title>
+</head>
 
+<body>
+
+<h2><center>ConsHMM Atlas: conservation state annotations for major genomes and human genetic variation</center></h2>
+
+<center>
+    <img src="conshmm.png">
+</center>
+
+<p>The ConsHMM Atlas provides an atlas of over twenty genome-wide ConsHMM conservation state annotations for 8 organisms.
+ConsHMM annotates reference genomes at single nucleotide resolution into different conservation states based on the combinatorial and spatial patterns within
+a multiple species alignment inferred using a multivariate Hidden Markov Model (HMM). 
+ConsHMM can also produce allele specific conservation state annotations, which are provided as part of the ConsHMM Atlas 
+for all possible single-nucleotide mutations in the human genome. Additionally, the ConsHMM Atlas provides visualization tools of model parameters and enrichments.</p>
+
+<ul>
+    <li><a href="https://drive.google.com/drive/folders/19sad2KjOxYCE_6RYxapp6mS-N2gi13D0?usp=sharing">ConsHMM genome annotations</a> for 8 organisms
+reference genomes. 
+See available organisms and assemblies in the table below. For some organisms and assemblies multiple different genome annotations are available
+based on different multi-species alignments. Browser files for the annotations are available through <a href="https://public.hoffman2.idre.ucla.edu/ernst/C1JXF/">here</a>.
+ For the human assemblies, <a href="https://drive.google.com/drive/folders/1nnkVn1q6FEtMZsfk_cwaT66GXT-GYy9d"> allele specific annotations are also available</a>.
+    <br>
+    <br>
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky"><b>Organism</b></th>
+    <th class="tg-0pky"><b>Assemblies Available</b></th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">C.elegans</td>
+    <td class="tg-0pky">ce11</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">D. melanogaster</td>
+    <td class="tg-0pky">dm6</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Dog</td>
+    <td class="tg-0lax">canFam3</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Human</td>
+    <td class="tg-0lax">hg19, hg38</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Mouse</td>
+    <td class="tg-0lax">mm10</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Rat</td>
+    <td class="tg-0lax">rn6</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">S. cerevisiae</td>
+    <td class="tg-0lax">sacCer3</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Zebrafish</td>
+    <td class="tg-0lax">danRer7, danRer11</td>
+  </tr>
+</table>
+    <br>
+
+    <li><a href="https://ernstlab.shinyapps.io/conshmm/">ConsHMM R Shiny app</a> for browsing models interactively
+    <li><a href="https://github.com/ernstlab/ConsHMM">ConsHMM software</a>. ConsHMM is built on top 
+of the <a href="http://compbio.mit.edu/ChromHMM/">ChromHMM</a> software for chromatin state learning.
+</ul>
+
+<br>
+
+
+<li>The ConsHMM Atlas is described in:<br>
+Arneson A, Felsheim B, Chien J, Ernst J. 
+<a href="https://academic.oup.com/nargab/article/2/4/lqaa104/6040971">
+ConsHMM Atlas: conservation state annotations for major genomes and human genetic variation</a></b>. 
+<i>NAR Genomics and Bioinformatics</i>, 2:lqaa104, 2020.<br>
+<br>
+
+<li>The ConsHMM software is described in:<br>
+Arneson A, Ernst J.
+<a href="https://www.nature.com/articles/s42003-019-0488-1">
+Systematic discovery of conservation states for single-nucleotide annotation of the human genome</a></b>. <i>Communications Biology</i>,
+2,248(2019).<br>
+<br>
+
+
+<font size=1>Funding for the ConsHMM Atlas and ConsHMM provided by US National Institutes of Health grants DP1DA044371, R01ES024995, U01HG007912 and U01MH105578 (J.E.), and T32CA201160 (A.A.), US National Science Foundation CAREER Award #1254200 (J.E.), a Kure-IT award and an Alfred P. Sloan Fellowship (J.E.).</font>
+</body>
+</html>
