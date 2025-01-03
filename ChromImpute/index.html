@@ -1,0 +1,94 @@
+<title>ChromImpute</title>
+<head>
+</head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59806889-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<body>
+<div id="container" >
+	<div id="header">
+		<h1><center>ChromImpute</center></h1>
+<center>
+<img src="imputationexample.png">
+</center>
+ChromImpute is software for large-scale systematic epigenome imputation. ChromImpute takes an existing compendium of epigenomic data and uses it to predict signal tracks for mark-sample
+combinations not experimentally mapped or to generate a potentially more robust version of data sets that have been mapped experimentally. ChromImpute bases its predictions
+on features from signal tracks of other marks that have been mapped in the target sample and the target mark in other samples with these features combined using an ensemble of regression trees.
+
+<ul>
+<li><a href="ChromImpute.zip">ChromImpute software</a> (v1.0.5; <a href="versionlog.txt">version log</a>)<br>
+<li><a href="ChromImpute_manual.pdf">ChromImpute manual</a><br>
+<li><a href="http://www.broadinstitute.org/~jernst/EXAMPLE.zip">Example data chr21 only of Roadmap Epigenomics compendium</a> (~1GB)<br>
+<br>
+
+<li> Quick instructions on running ChromImpute on the example data (chr21 of eight primary marks from the Roadmap Epigenomics project):<br>
+1. Install Java 1.7 or later if not already installed.<br>
+2. Unzip the file ChromImpute.zip.<br>
+3. Unzip the file EXAMPLE.zip and place in the ChromImpute directory.<br>
+4. From a command line go to the directory in which ChromImpute.jar is installed.<br>
+5. To try out ChromImpute imputing H3K9ac for sample E034 (Primary T cells from peripheral blood) based on pre-computed predictors enter the command:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar Apply EXAMPLE/CONVERTEDDATADIR EXAMPLE/DISTANCEDIR EXAMPLE/PREDICTORDIR EXAMPLE/tier1_samplemarktable.txt EXAMPLE/hg19sizes_chr21.txt EXAMPLE/OUTPUTDATA E034 H3K9ac<br>
+</font>
+In ~20min this will generate a chr21_impute_E034_H3K9ac.wig.gz file in the directory EXAMPLE/OUTPUTDATA<br>
+<br>
+<li>
+In general the following main steps are applied to generate an imputation. The manual provides more detail and discusses additional options including parallelization options to make some steps more efficient.<br>
+1. If the input signal data is not already available at the desired resolution, default assumed to be 25bp, then use the <i>Convert</i> command to convert the
+data to the desired resolution. For the provided the example data, the data is already provided at the desired resolution, but here is an example of a command
+that could be used to covert the data
+to the desired resolution if unconverted data was provided:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar Convert EXAMPLE/INPUTDATADIR EXAMPLE/tier1_samplemarktable.txt EXAMPLE/hg19sizes_chr21.txt EXAMPLE/CONVERTEDDATADIR</font><br>
+
+The data in the INPUTDATADIR directory should be in .bedgraph or .wig format. Each file is as an entry in the samplemarktable_example.txt. The file hg19sizes_chr21.txt
+specifies the chromosome(s) to include and their lengths and the output is written to the CONVERTEDDATADIR directory.<br>
+<br>
+2. Global distance between datasets should be computed with the <i>ComputeGlobalDist</i> command. For generating the distances included in the example data the following
+command was run:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar ComputeGlobalDist  EXAMPLE/CONVERTEDDATADIR EXAMPLE/tier1_samplemarktable.txt EXAMPLE/hg19sizes_chr21.txt EXAMPLE/DISTANCEDIR</font><br>
+<br>
+3. Generate the features for the training with the <i>GenerateTrainData</i> command. This is done separately for each mark of interest. For generating the H3K9ac training data for the 
+example data this was done with
+the command:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar GenerateTrainData EXAMPLE/CONVERTEDDATADIR EXAMPLE/DISTANCEDIR EXAMPLE/tier1_samplemarktable.txt EXAMPLE/hg19sizes_chr21.txt EXAMPLE/TRAINDATA H3K9ac</font><br>
+<br>
+4. Generate the trained predictors for a specific mark in a specific sample type of interest with the <i>Train</i> command. For generating the predictors for imputing H3K9ac in E034 
+for the example data this was done with the command:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar Train EXAMPLE/TRAINDATA EXAMPLE/tier1_samplemarktable.txt EXAMPLE/PREDICTORDIR E034 H3K9ac<br>
+</font>
+<br>
+5. Generate the imputed signal track with <i>Apply</i> command for the desired mark in the desired sample. To generate the imputed signal track for H3K9ac for sample E034 the command is:<br>
+<font face="courier new">
+java -mx4000M -jar ChromImpute.jar Apply EXAMPLE/CONVERTEDDATADIR EXAMPLE/DISTANCEDIR EXAMPLE/PREDICTORDIR EXAMPLE/tier1_samplemarktable.txt EXAMPLE/hg19sizes_chr21.txt EXAMPLE/OUTPUTDATA E034 H3K9ac<br>
+</font>
+<br>
+<li>The observed compendium of data and imputed signal data, peak calls on imputed data, and chromatin states based on imputed data (hg19) can be found linked from <a href="http://compbio.mit.edu/roadmap">here</a>.
+<li>The full roadmap epigenomics observed data already converted in a form to be run in ChromImpute with necessary files can be found <a href="http://www.broadinstitute.org/~jernst/roadmapconverted">here</a>.
+<li> ChromImpute is described in:<br>
+Ernst J, Kellis M. <a href="https://www.nature.com/articles/nbt.3157">Large-scale imputation of epigenomic datasets for systematic annotation of diverse human tissues</a>. <i>Nature Biotechnology</i>, 33:364-376, 2015. 
+<br>
+<li> Subscribe <a href="https://groups.google.com/forum/#!forum/chromimpute-announce">to a mailing list for announcements of new versions</a>.
+<li> ChromImpute source code is available on GitHub <a href="https://github.com/jernst98/ChromImpute">here</a>.
+<li> Please contact Jason Ernst (jason.ernst at ucla dot edu) with any questions, comments, or bug reports.
+<li> Funding for ChromImpute provided by NSF CAREER Award #1254200 and an Alfred P. Sloan Fellowship to J.E. and by NIH grants RC1HG005334 and R01HG004037 to M.K.
+</ul>
+<br>
+
+</font>
+<br>
+
+</ul>
+</div>
+</body>
+</html>

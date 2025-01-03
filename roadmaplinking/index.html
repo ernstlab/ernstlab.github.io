@@ -1,0 +1,80 @@
+<title>Roadmap Epigenomics Enhancer-Gene Linking</title>
+<head>
+</head>
+
+<body>
+<div id="container" >
+	<div id="header">
+		<h1><center>Roadmap Epigenomics Enhancer-Gene Linking</center></h1>
+
+
+Prediction of enhancer-gene links for each Roadmap Epigenomics reference epigenome
+is available in <a href="https://zenodo.org/records/12042965">this zip file</a> (212MB).<br>
+Files in the zipfile have the naming links_EPIGENOMEID_ENHANCERSTATE_2.5.txt.<br>
+
+EPIGENOMEID corresponds to the ID of the Reference Epigenome. Meta-data for the reference epigenome
+is available <a href="https://docs.google.com/a/g.ucla.edu/spreadsheets/d/1yikGx4MsO9Ei36b64yOy9Vb6oPC5IBGlFbYEt-N6gOM/edit?usp=sharing#gid=15">
+here</a>. ENHANCERSTATENUMOF15STATEOBSERVEDMODEL corresponds to the state number of one of the candidate enhancer chromatin states from the 15-state observed
+model from (Roadmap Epigenomics Consortium et al, 2015). Predictions have been made separately for states 6_EnhG, 7_Enh, and 12_EnhBiv and for each reference
+epigenome.<br> The files are six-column tab delimited with the columns as follows:<br>
+
+(1) chromosome <br>
+(2) start coordinate of 200-bp bin (0-based inclusive; hg19) <br>
+(3) end coordinate of 200-bp bin (0-based exclusive; hg19) <br>
+(4) ensembl gene ID <br>
+(5) prediction confidence score <br>
+(6) position relative to TSS <br>
+<br>
+
+Predictions are made separately for each 200bp bin. 
+Only enhancer-gene links with a confidence score greater than or equal to 2.5 are included in the file.<br>
+The general approach to generate these links was described in (Ernst et al, 2011) with
+specific changes described in (Liu et al, 2017). <br>
+The data used to generate these links was described in (Roadmap Epigenomics Consortium et al, 2015).<br>
+Code used to generate the links can be found <a href="https://github.com/dnaase/Bis-tools/blob/master/recombination_valley_paper/LinkingRM.java">here</a>,
+which also uses the Weka software.
+
+<h3>References</h3>
+<li>
+Ernst J, Kheradpour P, Mikkelsen TS, Shoresh N, Ward LD, Epstein CB, Zhang X, Wang L,
+Issner R, Coyne M, Ku M, Durham T, Kellis M, Bernstein BE.
+<br>
+<b><a href="http://www.nature.com/nature/journal/v473/n7345/full/nature09906.html">
+Mapping and analysis of chromatin state dynamics in nine human cell types</a></b>.<br><i>Nature</i> 473: 43-49, 2011.<br> 
+<br>
+<li>
+Liu Y, Sarkar A, Kheradpour P, Ernst J, Kellis M.
+<br>
+<b><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1308-x">
+Evidence of a recombination rate valley in human regulatory domains.</a></b><br><i>Genome Biology</i> 18: 193, 2017.<br>
+<br>
+<li>
+Roadmap Epigenomics Consortium, Kundaje A*, Meuleman W*, Ernst J*, Bilenky M*,
+Yen A, Heravi-Moussavi A, Kheradpour P, Zhang Z, Wang J, Ziller MJ,
+Amin V, Whitaker JW, Schultz MD, Ward LD, Sarkar A, Quon G,
+Sandstrom RS, Eaton ML, Wu YC, Pfenning AR, Wang X, Claussnitzer M,
+Liu Y, Coarfa C, Harris RA, Shoresh N, Epstein CB, Gjoneska E, Leung D,
+Xie W, Hawkins RD, Lister R, Hong C, Gascard P, Mungall AJ, Moore R,
+Chuah E, Tam A, Canfield TK, Hansen RS, Kaul R, Sabo PJ, Bansal MS,
+Carles A, Dixon JR, Farh KH, Feizi S, Karlic R, Kim AR, Kulkarni A,
+Li D, Lowdon R, Elliott G, Mercer TR, Neph SJ, Onuchic V, Polak P,
+Rajagopal N, Ray P, Sallari RC, Siebenthall KT, Sinnott-Armstrong NA,
+Stevens M, Thurman RE, Wu J, Zhang B, Zhou X, Beaudet AE, Boyer LA,
+De Jager PL, Farnham PJ, Fisher SJ, Haussler D, Jones SJ, Li W,
+Marra MA, McManus MT, Sunyaev S, Thomson JA, Tlsty TD, Tsai LH,
+Wang W, Waterland RA, Zhang MQ, Chadwick LH, Bernstein BE,
+Costello JF, Ecker JR, Hirst M, Meissner A, Milosavljevic A, Ren B,
+Stamatoyannopoulos JA, Wang T, Kellis M.<br>
+<b>
+<a href="http://www.nature.com/nature/journal/v518/n7539/full/nature14248.html">Integrative analysis of 111 reference human epigenomes</a></b>.<br>
+<i>Nature</i>, 518:317-330, 2015.<br>
+<a href="http://compbio.mit.edu/roadmap">Supporting Website</a><br>
+<br>
+
+
+</div>
+</body>
+</html>
+
+
+
