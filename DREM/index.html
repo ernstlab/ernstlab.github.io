@@ -1,0 +1,124 @@
+<html>
+<head>
+
+   <title>Dynamic Regulatory Events Miner (DREM)</title>
+</head>
+<Font Size=4>
+<center>
+<H1><font color="#004444">
+Dynamic Regulatory Events Miner (DREM)</Font><br>
+<img src="mapHeat.png" width="500" height="325" alt="DREM map of heat
+shock response in yeast"></font></H1>
+
+</center>
+The Dynamic Regulatory Events Miner (DREM) allows one to model, analyze,
+and visualize
+transcriptional gene regulation dynamics. The method of DREM takes as input time series gene expression
+data and static or dynamic transcription factor-gene interaction data (e.g. ChIP-seq data), and
+produces as output a dynamic regulatory map.
+The dynamic regulatory map highlights major bifurcation events in the time series expression data
+and transcription factors potentially responsible for them. See the manual and papers below for more
+details.
+
+<p>
+<b>DREM 2.0 was released and supports a number of new features including (see manual for details): </b>
+<ul>
+<li>new static binding data for mouse, human, <i>D. melanogaster, A. thaliana</i></li>
+<li>a new and more flexible implementation of the IOHMM supports dynamic binding data for each time point or as a mix of static/dynamic TF input</li>
+<li>expression levels of TFs can be used to improve the models learned by DREM</li>
+<li>the motif finder <a href="http://gene.ml.cmu.edu/DECOD/"> DECOD</a> can be used in conjunction with DREM and help find DNA motifs for unannotated splits</li>
+<li>new features for the visualization of expressed TFs, dragging boxes in the model view, and switching between representations</li>
+</ul>
+</p>
+
+<b><a href = "drem2.zip"> Click here to download DREM version 2.0.4</a></b>
+(<a href="versionlog.txt">versionlog.txt</a>)
+<ul>
+<li>DREM User manual: <a href="DREMmanual.pdf">DREMmanual.pdf</a></li>
+<li>
+The DREM method was originally described and applied to yeast in the paper:
+J. Ernst, O. Vainas, C.T. Harbison, I. Simon, and Z. Bar-Joseph.
+<a href=" https://www.embopress.org/doi/full/10.1038/msb4100115">
+Reconstructing Dynamic Regulatory Maps</a>.
+<i>Nature-EMBO Molecular Systems Biology</i>, 3:74, 2007. Click
+<a href="http://www.cs.cmu.edu/~jernst/olddrem/msb.html">here</a> for Supporting Information
+specific to that paper
+<li>If you use the DREM 2.0 and beyond please cite also:
+   M.H. Schulz, W.E. Devanny, A. Gitter, S. Zhong, J. Ernst and Z. Bar-Joseph <br>
+<a href=http://www.biomedcentral.com/content/pdf/1752-0509-6-104.pdf>DREM 2.0: Improved reconstruction of dynamic regulatory networks from time-series expression data</a>,
+<i>BMC Systems Biology 2012</i> </li>
+<li>Other examples of published papers using DREM as part of the data analysis can be found
+<a href="http://www.sb.cs.cmu.edu/drem/examples.html">
+here</a>. <br>
+<li> <a href="https://groups.google.com/forum/#!forum/stem-and-drem-updates">
+Sign-up here</a> for a google group mailing list to receive announcements of new versions of DREM and also <a href="www.cs.cmu.edu/~jernst/stem/">STEM</a>.</li>
+<li>Email any questions, comments, or bugs found to
+<a href="http://www.biolchem.ucla.edu/labs/ernst/">Jason Ernst</a>
+<a href="mailto:jernst@cs.cmu.edu">(jernst@cs.cmu.edu)</a> or <a href="https://www.mmci.uni-saarland.de/en/investigators/irgleaders/mschulz">Marcel Schulz</a> <a href="mailto:marcel.schulz@em.uni-frankfurt.de">(marcel.schulz@em.uni-frankfurt.de)</a></li>
+<li> Source code is available on GitHub <a href="https://github.com/jernst98/STEM_DREM">here</a>.</li>
+<li> DREM is now available under a GPL v3.0 license</li>
+</ul>
+<br>
+
+<b>Short Primer: Starting DREM </b><br>
+1.  To run DREM Java 1.5 or higher must be installed <br>
+2.  Save the drem2.zip file to a computer. <br>
+3.  Unzip the drem2.zip file <br>
+4a.  If on windows double click on the .cmd file
+corresponding to the condition of interest to see
+DREM opened with the data from that condition. <br>
+4b.  If not on windows start DREM from the drem directory with the command
+java -mx1024M -ms512M -jar drem.jar -d [defaultfilename]
+where defaultfilename is the name of the condition DREM should be
+opened with.  For instance to open DREM with the heat shock data type
+java -mx1024M -ms512M -jar drem.jar -d defaultsHeatSample.txt <br>
+If you want to use a human dataset try java -mx1024M -ms512M -jar drem.jar -d defaultsHumanSample.txt <br>
+<br>
+Using DREM <br>
+5.  Once DREM is open press the execute button at the bottom. <br>
+6.  To see only genes assigned to a certain path click on that
+path. <br>
+7.  The gene table button displays the names of the genes currently
+display by DREM. <br>
+8.  The GO table displays a GO enrichment for all genes displayed by
+DREM <br>
+<br>
+Please read the provided manual to learn more about the features of DREM!
+
+<p>
+<b>DREM extensions</b>
+<br>DREM has been extended to model additional biological settings and other types of high-throughput data.  Details, code, and references can be found on the respective web pages:
+<ul>
+<li><b><a href = "mirdrem/">mirDREM</a></b>: supports the use of microRNAs in DREM allowing for dynamic models that integrate both TFs and miRNAs
+<!--You can read more about it at the following reference:
+<br>
+M. H. Schulz, K.V. Pandit, C.L. Lino Cardenasb, N. Ambalavanan, N. Kaminski, and Z. Bar-Joseph. <br />
+		<span class='bold'>
+			<a href='http://www.pnas.org/content/early/2013/08/28/1303236110'>Reconstructing dynamic microRNA-regulated interaction networks</a>
+		</span><br />
+		<span class='italics'>Proceedings of the National Academy of Sciences of the United States of America
+(PNAS), </span>,  doi: 10.1073/pnas, 2013-->
+</li>
+<li><b><a href = "http://sb.cs.cmu.edu/sdrem/">SDREM</a></b>: links dynamic transcriptional regulatory networks to upstream signaling pathways
+<li><b><a href = "http://sb.cs.cmu.edu/mtsdrem/">MT-SDREM</a></b>: multitask learning for modeling multiple conditions with SDREM
+<li><b><a href = "http://sb.cs.cmu.edu/smarts/">SMARTS</a></b>: reconstructs and clusters multiple condition-specific transcriptional response networks
+<li><b><a href = "http://sb.cs.cmu.edu/cdrem/">cDREM</a></b>: models combinatorial gene regulation
+<li><b><a href= "https://github.com/phoenixding/idrem#interactive-visualization/">iDREM</a></b>: interactive visualization and integration of protein interaction and epigenetic data with DREM
+<!-- Single-cell RNA-seq coming soon -->
+</ul>
+</p>
+
+<Font Size = 2>The development of DREM, DREM2.0 and mirDREM was supported in part by NIH grants NO1 AI-5001, 1R01GM085022 and U01HL108642 and NSF CAREER award 0448453 to ZBJ</Font>
+
+
+<script src="http://www.google-analytics.com/urchin.js"
+type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-356186-1";
+urchinTracker();
+</script>
+
+</body>
+</html>
+
