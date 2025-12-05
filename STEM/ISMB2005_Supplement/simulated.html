@@ -1,0 +1,59 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win98; U) [Netscape]">
+   <title>Simulated Data</title>
+</head>
+<center><H1><font color="#004444">Simulated Data
+</font></H1></center> 
+Two simulated data sets were generated to contain each 5000 
+genes and
+five time points.  In the first data set every expression value was 
+independently drawn from a Uniform[10,100] distribution.
+In the second data set the expression values for 
+4850 genes were again
+drawn from a Uniform[10,100] distribution.  For the remaining 150 genes, 
+the expression profile for the gene
+(<i>v</i><sub>0</sub>,<i>v</i><sub>1</sub>,<i>v</i><sub>2</sub>,<i>v</i><sub>3</sub>,<i>v</i><sub>4</sub>)
+was drawn from the following distribution:
+<br>
+<i>v</i><sub>0</sub> ~ Uniform[10,100]<br>
+<i>v<sub>i</sub></i> ~ <i>v<sub>i</i>-1</sub>*(2<i><sup>m<sub>i</sub></i> 
+- <i>m<sub>i-1</sub></sup></i>) + <i>Z</i>  for <i>i</i>=1,...,4<br>
+where <i>Z</i> is distributed as a 
+Uniform[-.05*2<i><sup>m<sub>i</sub></i>-<i>m<sub>i</i>-1</sub></sup>,.05*2<i><sup>m<sub>i</sub></i>-<i>m<sub>i</i>-1</sub></sup>]
+<br>
+
+For 50 genes (1% of the total) we set <br>
+(<i>m</i><sub>0</sub>,<i>m</i><sub>1</sub>,<i>m</i><sub>2</sub>,<i>m</i><sub>3</sub>,<i>m</i><sub>4</sub>)=(0,-1,1,1,-1)<br>
+For another 50 genes we set <br>
+(<i>m</i><sub>0</sub>,<i>m</i><sub>1</sub>,<i>m</i><sub>2</sub>,<i>m</i><sub>3</sub>,<i>m</i><sub>4</sub>)=(0,1,0,0,2)<br>
+For the final 50 genes we set <br>
+(<i>m</i><sub>0</sub>,<i>m</i><sub>1</sub>,<i>m</i><sub>2</sub>,<i>m</i><sub>3</sub>,<i>m</i><sub>4</sub>)=(0,2,1,0,0)<br> 
+In effect we have planted 50 genes in each of the three profiles with some 
+noise.<br>
+The algorithm correctly determine that there was no significant
+profiles in the first data set. <br>
+ In the second data set
+the algorithm was correctly able to recover the three planted expression 
+profiles with no false positives.
+
+<p><li><a href="randomdatanoplants.txt">Simulated data with no genes
+planted </a></li> 
+<p><li><a href="randomdataplants.txt">Simulated data with genes 
+planted</a></li> 
+<p><li>
+The model profiles in the experiment with no genes planted.  All profiles 
+are uncolored
+meaning there is no significant profile.<br>
+<image SRC="overviewnoplants.jpg"> 
+</li> 
+<p><li>The model profiles in the experiment with genes planted.
+The three colored profiles are those for which genes were planted.<br>
+<image SRC="overviewplants.jpg"> 
+</li><br>
+</body>
+</html>
+
+
